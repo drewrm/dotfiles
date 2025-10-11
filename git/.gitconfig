@@ -1,0 +1,16 @@
+[include]
+	path = ~/.gitconfig_private
+[alias]
+	ci = commit
+	st = status
+	co = checkout
+[gpg]
+	format = ssh
+[user]
+	signingkey = ~/.ssh/id_ed25519_sk.pub
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
