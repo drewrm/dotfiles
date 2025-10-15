@@ -1,0 +1,37 @@
+{
+	"include": [
+		"modules/clock.jsonc",
+		"modules/cpu.jsonc",
+		"modules/disk.jsonc",
+		"modules/memory.jsonc",
+		"modules/hyprland/*.jsonc"
+	],
+	"layer": "top",
+	"position": "top",
+	"height": 35,
+	"width": 0,
+	"margin": 0,
+	"spacing": 0,
+	"padding": 10,
+	"mode": "dock",
+	"autohide": true,
+	"autohide-delay": 5,
+	"autohide-blocked": false,
+	"modules-left": [
+		"hyprland/workspaces",
+		"hyprland/window"
+	],
+	"modules-center": [
+		"cpu",
+		"disk",
+		"memory",
+		"clock"
+	],
+	"modules-right": [
+		"pulseaudio",
+		"network",
+		"bluetooth"
+	],
+	"reload_on_style_change": true,
+	"reload_on_module_change": true
+}
