@@ -59,3 +59,6 @@ augroup fern-custom
 augroup END
 
 nmap <silent> <leader>f :Fern . -drawer -toggle<CR>
+
+set shiftwidth=4
+set expandtab

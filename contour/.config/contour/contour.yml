@@ -416,11 +416,11 @@ profiles:
             # - rectangle     just the outline of a block
             # - underscore    a line under the text
             # - bar:          the well known i-Beam
-            shape: bar
+            shape: block
             # Determines whether or not the cursor will be blinking over time.
             blinking: false
             # Blinking interval (in milliseconds) to use when cursor is blinking.
-            blinking_interval: 500
+            blinking_interval: 800
 
         # vi-like normal-mode specific settings.
         # Note, currently only the cursor can be customized.
@@ -455,7 +455,7 @@ profiles:
             position: Bottom
             # Synchronize the window title with the Host Writable status_line if
             # and only if the host writable status line was denied to be shown.
-            sync_to_window_title: false
+            sync_to_window_title: true
             indicator:
                 left: " {InputMode:Bold,Color=#FFFF00}{Tabs:ActiveColor=#FFFF00,Left= │ }{SearchPrompt:Left= │ }{TraceMode:Bold,Color=#FFFF00,Left= │ }{ProtectedMode:Bold,Left= │ }"
                 middle: "{Title:Left= « ,Right= » }"

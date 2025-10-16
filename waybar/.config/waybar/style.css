@@ -8,26 +8,45 @@
 
 }
 
-#cpu {
+#hardware {
+	border-radius: 17px;
 	color: #15161E;
-	background-color: #9ECE6A;
-	border-radius: 5px 0 0 5px;
-	margin-left: 10px;
+	background-color: #bb9af7;
+}
+
+#workspaces {
+    padding: 0 10px;
+    margin: 0 10px;
+    border-radius: 17px;
+    color: #15161E;
+    background-color: #282A2E;
+}
+
+#cpu {
 }
 
 #disk {
-	color: #15161E;
-	background-color: #7DCFFF;
 }
 
 #memory {
-	color: #15161E;
-	background-color: #F7768E;
-	border-radius: 0 5px 5px 0;
-	margin-right: 10px;
 }
 
 #clock {
 	margin: 0 10px;
 }
 
+#connectivity {
+    padding: 0 10px;
+    min-width: 300px;
+    margin: 0 10px;
+    border-radius: 17px;
+}
+
+#connectivity * {
+    padding: 0 10px;
+}
+
+#music {
+	padding: 0 10px;
+	margin: 0 10px;
+}

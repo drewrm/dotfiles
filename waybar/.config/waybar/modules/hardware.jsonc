@@ -1,0 +1,17 @@
+{
+    "cpu": {
+	"format": " {usage}%",
+	"tooltip": false,
+	"interval": 1
+    },
+    "disk": {
+	"interval": 30,
+	"format": " {percentage_used} %",
+	"tooltip": true
+    },
+    "memory": {
+	"format": " {percentage}%",
+	"tooltip": true,
+	"interval": 1
+    }
+}

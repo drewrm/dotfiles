@@ -1,9 +1,8 @@
 {
 	"include": [
 		"modules/clock.jsonc",
-		"modules/cpu.jsonc",
-		"modules/disk.jsonc",
-		"modules/memory.jsonc",
+		"modules/hardware.jsonc",
+		"modules/network.jsonc",
 		"modules/hyprland/*.jsonc"
 	],
 	"layer": "top",
@@ -22,16 +21,35 @@
 		"hyprland/window"
 	],
 	"modules-center": [
-		"cpu",
-		"disk",
-		"memory",
-		"clock"
+		"group/hardware"
 	],
 	"modules-right": [
-		"pulseaudio",
-		"network",
-		"bluetooth"
+		"group/music",
+		"group/connectivity",
+		"clock"
 	],
 	"reload_on_style_change": true,
-	"reload_on_module_change": true
+	"reload_on_module_change": true,
+	"group/hardware": {
+	    "orientation": "horizontal",
+	    "modules": [
+		"cpu",
+		"disk",
+		"memory"
+	    ]
+	},
+	"group/connectivity": {
+	    "orientation": "horizontal",
+	    "modules": [
+		"network",
+		"bluetooth"
+	    ]
+	},
+	"group/music": {
+	    "orientation": "horizontal",
+	    "modules": [
+		"mpris",
+		"pulseaudio"
+	    ]
+	}
 }

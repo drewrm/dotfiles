@@ -1,7 +1,0 @@
-{
-	"memory": {
-		"format": " {percentage}%",
-		"tooltip": true,
-		"interval": 1
-	}
-}
