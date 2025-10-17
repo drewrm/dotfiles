@@ -1,17 +1,26 @@
 {
     "cpu": {
-	"format": " {usage}%",
-	"tooltip": false,
+	"format": "  {usage}%",
+	"tooltip": true,
 	"interval": 1
     },
     "disk": {
 	"interval": 30,
-	"format": " {percentage_used} %",
+	"format": "  {percentage_used}%",
 	"tooltip": true
     },
     "memory": {
 	"format": " {percentage}%",
 	"tooltip": true,
 	"interval": 1
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "interval": 1,
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            "", "", ""
+        ]
     }
 }

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=15.0.1
+Name=OCCT
+GenericName=Performance Testing
+Comment=Performance Testing
+Exec=/home/andrew/Downloads/OCCT
+Terminal=false
+Categories=Utility;

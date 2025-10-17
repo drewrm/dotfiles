@@ -1,55 +1,67 @@
 {
-	"include": [
-		"modules/clock.jsonc",
-		"modules/hardware.jsonc",
-		"modules/network.jsonc",
-		"modules/hyprland/*.jsonc"
-	],
-	"layer": "top",
-	"position": "top",
-	"height": 35,
-	"width": 0,
-	"margin": 0,
-	"spacing": 0,
-	"padding": 10,
-	"mode": "dock",
-	"autohide": true,
-	"autohide-delay": 5,
-	"autohide-blocked": false,
-	"modules-left": [
-		"hyprland/workspaces",
-		"hyprland/window"
-	],
-	"modules-center": [
-		"group/hardware"
-	],
-	"modules-right": [
-		"group/music",
-		"group/connectivity",
-		"clock"
-	],
-	"reload_on_style_change": true,
-	"reload_on_module_change": true,
-	"group/hardware": {
-	    "orientation": "horizontal",
-	    "modules": [
-		"cpu",
-		"disk",
-		"memory"
-	    ]
-	},
-	"group/connectivity": {
-	    "orientation": "horizontal",
-	    "modules": [
-		"network",
-		"bluetooth"
-	    ]
-	},
-	"group/music": {
-	    "orientation": "horizontal",
-	    "modules": [
-		"mpris",
-		"pulseaudio"
-	    ]
-	}
+    "include": [
+        "modules/audio.jsonc",
+        "modules/clock.jsonc",
+        "modules/hardware.jsonc",
+        "modules/connectivity.jsonc",
+        "modules/power.jsonc",
+        "modules/hyprland/*.jsonc"
+    ],
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "width": 0,
+    "margin": 0,
+    "spacing": 0,
+    "padding": 10,
+    "mode": "dock",
+    "autohide": true,
+    "autohide-delay": 5,
+    "autohide-blocked": false,
+    "ipc": true,
+    "modules-left": [
+        "group/hyprland"
+    ],
+    "modules-center": [
+        "group/hardware"
+    ],
+    "modules-right": [
+        "group/audio",
+        "group/connectivity",
+        "clock",
+        "custom/power"
+    ],
+    "reload_on_style_change": true,
+    "reload_on_module_change": true,
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "temperature",
+            "memory",
+            "disk"
+        ]
+    },
+    "group/connectivity": {
+        "orientation": "horizontal",
+        "modules": [
+            "network",
+            "bluetooth"
+        ]
+    },
+    "group/audio": {
+        "orientation": "horizontal",
+        "modules": [
+            "mpris",
+            "custom/audio-icon",
+            "pulseaudio/slider"
+        ]
+    },
+    "group/hyprland" : {
+        "orientation": "horizontal",
+        "modules": [
+            "hyprland/workspaces",
+            "hyprland/window"
+        ]
+    }
 }
