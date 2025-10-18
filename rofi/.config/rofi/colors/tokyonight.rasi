@@ -16,8 +16,14 @@
     border: 0px;
     kl: #c0caf5;
     black: #000000;
-
     transparent: rgba(46,52,64,0.3);
+
+    background:     #24283b;
+    background-alt: #24283b;
+    foreground:     #c0caf5;
+    selected:       #bb9af899;
+    active:         #9eCe6a;
+    urgent:         #f7768e;
 }
 
 // defines different aspects of the window
@@ -51,7 +57,7 @@ inputbar {
     border: 2px;
     border-color: @primary;
     border-radius: 16px;
-    children: [ prompt, entry ];
+    children: [ entry ];
 }
 
 message {
@@ -65,15 +71,11 @@ textbox {
     padding: 8px 24px;
 }
 
-
-prompt {
-}
-
 entry {
-    placeholder:        "Search";
+    placeholder: "Search";
 }
 
-entry, prompt, case-indicator {
+entry, case-indicator {
     text-font: inherit;
     text-color: inherit;
 }

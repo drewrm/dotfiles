@@ -10,18 +10,16 @@ function main() {
         status)
             bluetoothctl info
             ;;
-        connect)
-            bluetoothctl connect ${HEADPHONES}
-            ;;
-        disconnect)
-            bluetoothctl disconnect ${HEADPHONES}
-            ;;
         *)
-            if [[ "$(bluetoothctl devices Connected)" =~ "${HEADPHONES}" ]]; then
-                bluetoothctl disconnect ${HEADPHONES}
-            else
-                bluetoothctl connect ${HEADPHONES}
-            fi
+            for device in "${HEADPHONES}"; do
+                if [[ "$(bluetoothctl devices Connected)" =~ "${device}" ]]; then
+                    bluetoothctl disconnect ${device}
+                else
+                    bluetoothctl connect ${device}
+                fi
+            done
+
+           
             ;;
     esac
 }

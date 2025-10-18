@@ -1,8 +1,8 @@
 {
     "mpris": {
         "format": "{status_icon} {dynamic}",
-        "dynamic-len": 100,
-        "dynamic-order": ["title", "artist", "album"],
+        "dynamic-len": 70,
+        "dynamic-order": ["artist", "title", "album"],
         "status-icons": {
             "default": "▶",
             "paused": "⏸",

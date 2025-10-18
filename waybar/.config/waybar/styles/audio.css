@@ -1,16 +1,15 @@
 #custom-audio-icon {
-    margin: 0 10px 0 10px;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
     font-size: 28px;
 }
 
 #pulseaudio-slider {
-    padding: 0;
-    margin: 0;
 }
 
 #pulseaudio-slider slider {
-    min-height: 0px;
-    min-width: 0px;
     opacity: 0;
     background-image: none;
     border: none;
@@ -21,7 +20,7 @@
     min-height: 15px;
     min-width: 100px;
     border-radius: 15px;
-    background-color: black;
+    background-color: #282a2e;
 }
 #pulseaudio-slider highlight {
     min-width: 10px;

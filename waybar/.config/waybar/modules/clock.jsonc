@@ -1,6 +1,6 @@
 {
     "clock": {
-        "format": "{:%H:%M:%S %b %d %Z}",
+        "format": "{:%a %d %b %H:%M:%S %Z}",
         "timezones": [
             "Australia/Sydney",
             "Asia/Hong_Kong",
@@ -9,11 +9,10 @@
         "tooltip": true,
         "tooltip-format": "{calendar}",
         "calendar": {
-            "mode": "year",
+            "mode": "month",
             "mode-mon-col": 4,
             "format" : {
                 "weekdays": "<span><b>{}</b></span>",
-                "day-of-week": "<span color='#bb9af7'>{}</span>", // Customize day of week color
                 "months": "<span color='#9ece6a'><b>{}</b></span>",
                 "today": "<span bgcolor='#9ece6a' color='#15161E'>{}</span>" // Customize today's date color
             }

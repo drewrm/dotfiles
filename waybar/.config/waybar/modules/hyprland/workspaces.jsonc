@@ -5,10 +5,8 @@
             "default": "",
             "active": ""
         },
-        "persistent-workspaces": {
-            "*": 5
-        },
         "max-workspaces": 5,
+        "show-special": true,
         "on-scroll-up": "hyprctl dispatch workspace +1",
         "on-scroll-down": "hyprctl dispatch workspace -1",
         "cursor": true
