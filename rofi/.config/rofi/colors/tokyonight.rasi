@@ -6,22 +6,22 @@
 
 // define colors etc.
 * {
-    bg: #24283b;
+    bg: #24283baa;
     hv: #bb9af7; 
     primary: #bb9af7; 
     ug: #0B2447;
     font: "0xProto Nerd Font 16";
-    background-color: rgba(36,40,59,0.5);
+    background-color: #24283baa;
     //dark: @bg;
     border: 0px;
     kl: #c0caf5;
-    black: #000000;
-    transparent: rgba(46,52,64,0.3);
+    black: #23283b;
+    transparent: #24283b00;
 
-    background:     #24283b;
+    background:     #24283bee;
     background-alt: #24283b;
     foreground:     #c0caf5;
-    selected:       #bb9af899;
+    selected:       #bb9af8;
     active:         #9eCe6a;
     urgent:         #f7768e;
 }
@@ -37,7 +37,6 @@ window {
     orientation: horizontal;
     location: center;
     anchor: center;
-    transparency: "screenshot";
     border-color: @primary;   
     border: 2px;
     border-radius: 24px;
@@ -92,15 +91,15 @@ listview {
     layout: vertical;
     margin: 12px 0 0;
     //spacing: 5px;
-    padding: 8px;
+    padding: 0px;
     lines: 12;
-    columns: 1;
+    columns: 2;
     dynamic: true;
 }
 
 element {
     padding: 8px 16px;
-    spacing: 8px;
+    margin: 0;
     border-radius: 16px;
     vertical-align: 1;
     color: @kl;
@@ -108,7 +107,7 @@ element {
 }
 
 element-text {
-    background-color: inherit;
+    background-color: transparent;
     text-color: inherit;
 }
 
@@ -118,22 +117,22 @@ element selected.normal {
 }
 
 element normal active {
-    background-color: @hv;
     color: @black;
+    background-color: @hv;
 }
 
 element-text, element-icon {
-    background-color: inherit;
+    background-color: transparent;
     text-color: inherit;
 }
 
 element normal urgent {
-    background-color: @primary;
+    background-color: transparent;
 }
 
 element selected active {
-    background: @hv;
-    foreground: @bg;
+    background-color: @hv;
+    color: @black;
 }
 
 button {

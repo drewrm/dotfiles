@@ -1,3 +1,4 @@
+@import "themes/lavender.css";
 @import "styles/audio.css";
 
 * {
@@ -6,8 +7,8 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.4);
-    color: #ffffff;
+    background-color: @bg;
+    color: @text-color;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -18,7 +19,7 @@ window#waybar {
 
 #workspaces .active label {
 	font-size: 23px;
-	color: #bb9af7;
+	color: @highlight;
 }
 
 #cpu, #disk, #memory, #temperature {
@@ -30,14 +31,14 @@ window#waybar {
 #hardware {
     margin: 8px;
     border-radius: 14px;
-    background-color: #282a2e;
+    background-color: @bg-alt;
     opacity: 0.7;
 }
 
 #workspaces {
     margin: 8px;
     border-radius: 14px;
-    background-color: #282A2E;
+    background-color: @bg-alt;
     opacity: 0.7;
 }
 
