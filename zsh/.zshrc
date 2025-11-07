@@ -1,4 +1,7 @@
-export PATH="$HOME/.local/bin:$HOME/.config/rofi/scripts:$PATH"
+autoload -Uz compinit
+compinit
+
+export PATH="$HOME/.local/bin:$HOME/.config/rofi/scripts:$PATH:$HOME/.cargo/bin:$HOME/bin"
 
 function powerline_precmd() {
     PS1="$(powerline-shell --shell zsh $?)"
@@ -23,3 +26,4 @@ alias vimdiff='nvim -d'
 export EDITOR='nvim'
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(op completion zsh)"

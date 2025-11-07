@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=15.0.1
+Name=LM Studio
+Comment=Local AI Models, on Your Computer. 
+Exec=/home/andrew/Applications/LM-Studio.AppImage
+Icon=/home/andrew/Applications/lmstudio.png
+Terminal=false
+Categories=Utility;

@@ -11,11 +11,29 @@ Plugin 'lambdalisue/vim-fern-git-status'
 Plugin 'lambdalisue/vim-nerdfont'
 Plugin 'lambdalisue/vim-fern-hijack'
 Plugin 'lambdalisue/vim-fern-renderer-nerdfont'
+Plugin 'catgoose/nvim-colorizer.lua'
 
 call vundle#end()
+
 filetype plugin indent on
 colorscheme tokyonight-night
 
+lua <<EOF
+    require 'colorizer'.setup({
+        filetypes = { '*' },
+        user_default_options = {
+            RGB = true; -- #RGB hex codes
+            RRGGBB = true; -- #RRGGBB hex codes
+            RRGGBBAA = true; -- #RRGGBBAA hex codes
+            rgb_fn = true; -- CSS rgb() and rgba() functions
+            hsl_fn = true; -- CSS hsl() and hsla() functions
+            css = true; -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+            css_fn = true; -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        },
+    })
+EOF
+
+autocmd BufReadPost * lua require 'colorizer'.attach_to_buffer(0)
 let g:fern#renderer = 'nerdfont'
 let g:fern#default_hidden = 1
 

@@ -39,7 +39,7 @@ window {
     anchor: center;
     border-color: @primary;   
     border: 2px;
-    border-radius: 24px;
+    border-radius: 8px;
     spacing: 0;
     children: [ mainbox ];
 }
@@ -55,14 +55,14 @@ inputbar {
     padding: 8px 16px;
     border: 2px;
     border-color: @primary;
-    border-radius: 16px;
+    border-radius: 8px;
     children: [ entry ];
 }
 
 message {
     padding: 0;
     margin: 12px 0 0;
-    border-radius: 16px;
+    border-radius: 8px;
 
 }
 textbox {
@@ -100,7 +100,7 @@ listview {
 element {
     padding: 8px 16px;
     margin: 0;
-    border-radius: 16px;
+    border-radius: 8px;
     vertical-align: 1;
     color: @kl;
     font: inherit;

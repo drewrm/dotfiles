@@ -5,7 +5,7 @@
         "modules/hardware.jsonc",
         "modules/connectivity.jsonc",
         "modules/power.jsonc",
-        "modules/hyprland/*.jsonc"
+        "modules/workspaces/*.jsonc"
     ],
     "layer": "top",
     "position": "top",
@@ -20,7 +20,7 @@
     "autohide-blocked": false,
     "ipc": true,
     "modules-left": [
-        "group/hyprland"
+        "group/workspace"
     ],
     "modules-center": [
         "group/hardware"
@@ -57,11 +57,13 @@
             "pulseaudio/slider"
         ]
     },
-    "group/hyprland" : {
+    "group/workspace" : {
         "orientation": "horizontal",
         "modules": [
-            "hyprland/workspaces",
-            "hyprland/window"
+            "niri/workspaces",
+            "niri/window"
+            //"hyprland/workspaces",
+            //"hyprland/window"
         ]
     }
 }

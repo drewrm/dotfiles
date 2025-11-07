@@ -13,8 +13,8 @@
             "mode-mon-col": 4,
             "format" : {
                 "weekdays": "<span><b>{}</b></span>",
-                "months": "<span color='#9ece6a'><b>{}</b></span>",
-                "today": "<span bgcolor='#9ece6a' color='#15161E'>{}</span>" // Customize today's date color
+                "months": "<span color='#bb9af7'><b>{}</b></span>",
+                "today": "<span bgcolor='#bb9af7' color='#15161E'><b><i>{}</i></b></span>" // Customize today's date color
             }
         },
         "interval": 1,

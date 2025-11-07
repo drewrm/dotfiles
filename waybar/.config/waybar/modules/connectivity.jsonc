@@ -3,11 +3,12 @@
         "interval": 2,
         "family": "ipv4",
         "format-wifi": "󱚽 {essid}",
-        "tooltip-format-wifi": "Address: {ipaddr} \nDown:{bandwidthDownBytes} Up: {bandwidthUpBytes}"
+        "tooltip-format-wifi": "Address: {ipaddr} \nDown:{bandwidthDownBytes} Up: {bandwidthUpBytes}",
+        "on-click": "~/.config/waybar/scripts/start-or-focus.sh ~/.cargo/bin/impala"
     },
     "bluetooth": {
         "format-connected-battery": "󰂰 {device_alias} 󰂁 {device_battery_percentage}%",
-        "on-click": "~/.config/waybar/scripts/bt.sh",
+        "on-click": "~/.config/waybar/scripts/start-or-focus.sh ~/.cargo/bin/bluetui",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t󰂁 {device_battery_percentage}%"
     }

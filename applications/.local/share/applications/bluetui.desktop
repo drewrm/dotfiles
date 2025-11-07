@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Bluetui
+Comment=Launch Bluetui Bluetooth Manager
+Exec=contour -e /home/andrew/.cargo/bin/bluetui
+Terminal=false

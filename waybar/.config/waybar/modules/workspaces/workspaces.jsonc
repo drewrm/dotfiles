@@ -17,5 +17,19 @@
             "": "Desktop",
             "(.*) - Contour": "Terminal"
         }
+    },
+    "niri/workspaces": {
+        "format": " {icon} ",
+        "format-icons": {
+            "default": "",
+            "active": ""
+        }
+    },
+    "niri/window" : {
+        "format": "{title}",
+        "rewrite": {
+            "": "Desktop",
+            "(.*) - Contour": "Terminal"
+        }
     }
 }

@@ -368,7 +368,7 @@ profiles:
             regular:
                 # Font family defines the font family name, such as:
                 # ""Fira Code", "Courier New", or "monospace" (default).
-                family: "Inconsolata Nerd Font Mono" 
+                family: "CaskaydiaMono Nerd Font" 
 
                 # Font weight can be one of:
                 #   thin, extra_light, light, demilight, book, normal,

@@ -1,11 +1,23 @@
 #!/usr/bin/env bash
 
 function main() {
-    command=$1
-    
-    hyprctl clients | grep "class: ${command}"
+    local command=$1
+    local result=0
+    local window_id=""
 
-    if [ $? -ne 0 ]; then
+    case "${XDG_SESSION_DESKTOP}" in 
+        Hyprland)
+            result = $(hyprctl clients | grep "class: ${command}")
+            ;;
+        niri)
+            window_id=$(niri msg windows | grep -B2 "App ID: \"${command}" | grep -Po '\d+')
+            result=$?
+            ;;
+        *)
+            ;;
+    esac
+
+    if [ $result -ne 0 ]; then
         if [[ "${command}" == "btop" ]]; then 
             # btop works better in alacritty
             alacritty --title ${command} --class ${command} -e ${command}
@@ -13,7 +25,16 @@ function main() {
             contour class ${command} ${command}
         fi
     else 
-        hyprctl dispatch focuswindow class:${command}
+        case "${XDG_SESSION_DESKTOP}" in 
+            Hyprland)
+                hyprctl dispatch focuswindow class:${command}
+                ;;
+            niri)
+                niri msg action focus-window --id ${window_id}
+                ;;
+            *)
+                notify-send "Unknown Desktop" "This is not supported"
+        esac
     fi
 }
 
