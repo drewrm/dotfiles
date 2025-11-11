@@ -270,7 +270,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-spawn-sh-at-startup "wl-paste --watch cliphist store"
+spawn-sh-at-startup "walker --gapplication-service"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -369,7 +369,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+A hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "contour"; }
-    Mod+Space hotkey-overlay-title="Run an Application" { spawn "rofi" "-show" "drun"; }
+    Mod+Space hotkey-overlay-title="Run an Application" { spawn "walker"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -561,8 +561,8 @@ binds {
     Mod+Ctrl+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
-    Mod+B hotkey-overlay-title="View Clipboard" { spawn-sh "cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy"; }
-
+    //Mod+B hotkey-overlay-title="View Clipboard" { spawn-sh "cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy"; }
+    Mod+B hotkey-overlay-title="View Clipboard" { spawn "walker" "-m" "clipboard"; }
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
 
@@ -625,5 +625,5 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 
-    Mod+F4 { spawn "rofi" "-show" "window"; }
+    Mod+F4 { spawn "walker" "-m" "windows"; }
 }
