@@ -18,12 +18,7 @@ function main() {
     esac
 
     if [ $result -ne 0 ]; then
-        if [[ "${command}" == "btop" ]]; then 
-            # btop works better in alacritty
-            alacritty --title ${command} --class ${command} -e ${command}
-        else
-            contour class ${command} ${command}
-        fi
+        contour class ${command} ${command}
     else 
         case "${XDG_SESSION_DESKTOP}" in 
             Hyprland)

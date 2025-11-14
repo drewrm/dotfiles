@@ -14,7 +14,7 @@ renderer:
     # - default     Uses the default rendering option as decided by the terminal. 
     # - software    Uses software-based rendering. 
     # - OpenGL      Use (possibly) hardware accelerated OpenGL 
-    backend: default 
+    backend: OpenGL
 
     # Enables/disables the use of direct-mapped texture atlas tiles for 
     # the most often used ones (US-ASCII, cursor shapes, underline styles) 
@@ -321,7 +321,7 @@ profiles:
         # Font related configuration (font face, styles, size, rendering mode).
         font:
             # Initial font size in pixels.
-            size: 16
+            size: 14
 
             # Font Locator API
             # Selects an engine to use for locating font files on the system.
@@ -373,7 +373,7 @@ profiles:
                 # Font weight can be one of:
                 #   thin, extra_light, light, demilight, book, normal,
                 #   medium, demibold, bold, extra_bold, black, extra_black.
-                weight: Regular
+                weight: demilight
 
                 # Font slant can be one of: normal, italic, oblique.
                 slant: Normal
@@ -457,9 +457,9 @@ profiles:
             # and only if the host writable status line was denied to be shown.
             sync_to_window_title: true
             indicator:
-                left: " {InputMode:Bold,Color=#FFFF00}{Tabs:ActiveColor=#FFFF00,Left= │ }{SearchPrompt:Left= │ }{TraceMode:Bold,Color=#FFFF00,Left= │ }{ProtectedMode:Bold,Left= │ }"
+                left: " {InputMode:Bold}{Tabs:Left= │ }{SearchPrompt:Left= │ }{TraceMode:Bold,Left= │ }{ProtectedMode:Bold,Left= │ }"
                 middle: "{Title:Left= « ,Right= » }"
-                right: "{HistoryLineCount:Faint,Color=#c0c0c0} │ {Clock:Bold}"
+                right: "{HistoryLineCount:Faint} │ {Clock:Bold}"
 
         background:
             # Background opacity to use. A value of 1.0 means fully opaque whereas 0.0 means fully
@@ -513,15 +513,15 @@ color_schemes:
 
         # color to pick for hyperlinks decoration, when hovering
         hyperlink_decoration:
-            normal: '#F0F000'
-            hover: '#FF0000'
+            normal: '#E0AF68'
+            hover: '#7aa2f7'
 
         # Color to pick for vi_mode highlights.
         # The value format is equivalent to how selection colors and alpha contribution is defined.
         vi_mode_highlight:
             foreground: CellForeground
             foreground_alpha: 1
-            background: '#FFA500'
+            background: '#e0af68'
             background_alpha: 0.5
 
         # Color override for the current cursor's line when in vi_mode:
@@ -597,11 +597,8 @@ color_schemes:
         # Each section customize status line colors for corresponding mode.
         indicator_statusline:
             default:
-                foreground: '#FFFFFF'
-                background: '#0270C0'
-            inactive:
-                foreground: '#FFFFFF'
-                background: '#0270C0'
+                foreground: '#15161E'
+                background: '#7aa2f7'
 
         # Colors for the IME (Input Method Editor) area.
         input_method_editor:
