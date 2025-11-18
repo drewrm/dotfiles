@@ -1,0 +1,51 @@
+position = "top"
+sition = "top"
+height = 48
+
+[ironvar_defaults]
+network = "󰖪 Off"
+bluetooth = "󰂲 Off"
+
+[[bar]]
+
+[[start]]
+type = "workspaces"
+
+[[start]]
+type = "launcher"
+favourites = ["firefox", "steam", "1password"]
+
+[[center]]
+type = "music"
+format = " {title} - {album} / {artist}" 
+
+[[end]]
+type = "custom"
+class = "network"     
+
+[[end.bar]]
+type = "button"
+label = "#network"  
+on_click = "! ~/.config/waybar/scripts/start-or-focus.sh ~/.cargo/bin/impala"
+
+[[end]]
+type = "custom"
+class = "bluetooth"     
+
+[[end.bar]]
+type = "button"
+label = "#bluetooth"
+on_click = "! ~/.config/waybar/scripts/start-or-focus.sh ~/.cargo/bin/bluetui"
+
+[[end]]
+type = "clock"
+format = "%a %d %b %H:%M:%S"
+
+[[end]]
+type = "custom"
+class = "power"
+
+[[end.bar]]
+type = "button"
+label = ""
+on_click = "! ~/.config/rofi/powermenu/type-1/powermenu.sh"

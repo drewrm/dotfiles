@@ -1,0 +1,101 @@
+:root {
+    --color-dark-primary: rgba(26,27,38, 0.4);
+    --color-dark-secondary: rgba(26,27,38, 1.0);
+    --color-white: #cdd6f4;
+    --color-active: #bb9af7;
+    --color-urgent: #f7768e;
+    --margin-lg: 1em;
+    --margin-sm: 0.5em;
+}
+
+* {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    font-family: CaskaydiaMono Nerd Font, monospace;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+window, ,background {
+    background-color: transparent;
+}
+
+.music, .launcher button, .custom button, button.clock  {
+    background-image: none;
+}
+
+#bar {
+    background-color: var(--color-dark-primary);
+}
+
+popover, popover contents {
+    background-color: var(--color-dark-primary);
+}
+
+calendar {
+    background-color: var(--color-dark-secondary);
+}
+
+box, button, label {
+}
+
+button {
+    padding-left: var(--margin-lg);
+    padding-right: var(--margin-lg);
+}
+
+button:hover, button:active {
+    background-color: transparent;
+}
+
+.power {
+    margin-right: 15px;
+}
+
+#end > * + * {
+    margin-left: var(--margin-lg);
+}
+
+.sysinfo > * + * {
+    margin-left: var(--margin-sm);
+}
+
+.popup-clock .calendar-clock {
+    font-size: 2.0em;
+}
+
+.popup-clock .calendar .today {
+    background-color: var(--color-active);
+}
+
+.launcher {
+    padding-left: 30px;
+    background-color: transparent;
+}
+
+.launcher .item {
+    margin: 5px;
+    background-color: transparent;
+}
+
+.launcher .item.focused {
+    box-shadow: inset 0 -3px var(--color-active);
+}
+
+.workspaces .item {
+    padding: 15px;
+}
+.workspaces .item.visible {
+    box-shadow: inset 0 -3px var(--color-active);
+}
+
+.workspaces .item.focused {
+    box-shadow: inset 0 -5px var(--color-active);
+    background-color: var(--color-dark-secondary);
+}
+
+.workspaces .item.urgent {
+    background-color: var(--color-urgent);
+}
+

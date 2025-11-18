@@ -1,0 +1,7 @@
+[Unit]
+Description=Updates dynamic values in Ironbar
+
+[Service]
+Environment="HOME=%h"
+ExecStart=%h/.config/ironbar/updater.sh
+Type=oneshot
