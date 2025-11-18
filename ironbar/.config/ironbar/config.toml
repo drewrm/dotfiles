@@ -1,5 +1,5 @@
 position = "top"
-sition = "top"
+layer = "bottom"
 height = 48
 
 [ironvar_defaults]
