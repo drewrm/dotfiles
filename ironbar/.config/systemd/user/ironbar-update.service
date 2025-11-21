@@ -5,3 +5,6 @@ Description=Updates dynamic values in Ironbar
 Environment="HOME=%h"
 ExecStart=%h/.config/ironbar/updater.sh
 Type=oneshot
+
+[Install]
+RequiredBy=ironbar-update.timer

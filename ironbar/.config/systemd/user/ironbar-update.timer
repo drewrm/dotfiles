@@ -12,3 +12,4 @@ Persistent=true
 
 [Install]
 RequiredBy=ironbar.service
+WantedBy=timers.target
