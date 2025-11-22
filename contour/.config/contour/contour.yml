@@ -321,7 +321,7 @@ profiles:
         # Font related configuration (font face, styles, size, rendering mode).
         font:
             # Initial font size in pixels.
-            size: 14
+            size: 13
 
             # Font Locator API
             # Selects an engine to use for locating font files on the system.
