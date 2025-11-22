@@ -5,13 +5,27 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'folke/tokyonight.nvim'
-Plugin 'Github/copilot.vim'
+"Plugin 'Github/copilot.vim'
 Plugin 'lambdalisue/vim-fern'
 Plugin 'lambdalisue/vim-fern-git-status'
 Plugin 'lambdalisue/vim-nerdfont'
 Plugin 'lambdalisue/vim-fern-hijack'
 Plugin 'lambdalisue/vim-fern-renderer-nerdfont'
 Plugin 'catgoose/nvim-colorizer.lua'
+Plugin 'mrcjkb/rustaceanvim'
+Plugin 'cordx56/rustowl'
+Plugin 'rust-lang/rust.vim'
+Plugin 'mason-org/mason.nvim'
+Plugin 'nvim-treesitter/nvim-treesitter'
+Plugin 'mfussenegger/nvim-dap'
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'hrsh7th/nvim-cmp'
+Plugin 'hrsh7th/cmp-nvim-lsp'
+Plugin 'hrsh7th/cmp-buffer'
+Plugin 'hrsh7th/cmp-path'
+Plugin 'hrsh7th/cmp-cmdline'
+Plugin 'onsails/lspkind.nvim'
+
 
 call vundle#end()
 
@@ -19,6 +33,8 @@ filetype plugin indent on
 colorscheme tokyonight-night
 
 lua <<EOF
+    require 'mason'.setup()
+
     require 'colorizer'.setup({
         filetypes = { '*' },
         user_default_options = {
@@ -31,6 +47,88 @@ lua <<EOF
             css_fn = true; -- Enable all CSS *functions*: rgb_fn, hsl_fn
         },
     })
+    
+    require 'nvim-treesitter.configs'.setup({
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust" },
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+    })
+
+    local cmp = require 'cmp'
+    cmp.setup({
+        snippet = {
+          expand = function(args)
+            vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+          end,
+        },
+
+        window = {
+          -- completion = cmp.config.window.bordered(),
+          -- documentation = cmp.config.window.bordered(),
+          completion = {
+              winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+              col_offset = -3,
+              side_padding = 0,
+          },
+        },
+
+        formatting = {
+            fields = { "kind", "abbr", "menu" },
+            format = function(entry, vim_item)
+              local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+              local strings = vim.split(kind.kind, "%s", { trimempty = true })
+              kind.kind = " " .. (strings[1] or "") .. " "
+              kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+              return kind
+            end,
+        },
+
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }),
+
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'vsnip' },
+        }, {
+          { name = 'buffer' },
+        })
+  })
+
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
+  })
+
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+  vim.lsp.config('codebook', {
+    capabilities = capabilities
+  })
+
+  vim.lsp.enable('codebook')
+
 EOF
 
 autocmd BufReadPost * lua require 'colorizer'.attach_to_buffer(0)
@@ -80,3 +178,4 @@ nmap <silent> <leader>f :Fern . -drawer -toggle<CR>
 
 set shiftwidth=4
 set expandtab
+set number
