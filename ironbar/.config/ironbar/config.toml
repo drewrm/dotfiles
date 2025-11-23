@@ -1,6 +1,9 @@
+name = "main"
 position = "top"
 layer = "bottom"
 height = 48
+exclusive_zone = true
+#autohide = 2000
 
 [ironvar_defaults]
 network = "󰖪 Off"

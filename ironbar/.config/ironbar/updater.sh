@@ -20,12 +20,12 @@ function bt {
             battery_icon="󰂀"
         fi
 
-        ~/Projects/ironbar/target/release/ironbar var set bluetooth "󰂰${connected_device} ${battery_icon} ${battery_pct}%"
+        ~/.cargo/bin/ironbar var set bluetooth "󰂰${connected_device} ${battery_icon} ${battery_pct}%"
     else
         if [ $(bluetoothctl show | awk '/PowerState/{print $2}') == 'on' ]; then
-            ~/Projects/ironbar/target/release/ironbar var set bluetooth "󰂯 On"
+            ~/.cargo/bin/ironbar var set bluetooth "󰂯 On"
         else
-            ~/Projects/ironbar/target/release/ironbar var set bluetooth "󰂲 Off"
+            ~/.cargo/bin/ironbar var set bluetooth "󰂲 Off"
         fi
     fi
 
@@ -34,9 +34,9 @@ function bt {
 function network {
     local network=$(nmcli -t -f NAME c s | head -n 1)
     if [ ! -z "${network}" ]; then 
-        ~/Projects/ironbar/target/release/ironbar var set network "󰖩 ${network}"
+        ~/.cargo/bin/ironbar var set network "󰖩 ${network}"
     else
-        ~/Projects/ironbar/target/release/ironbar var set network "󰖪 Off"
+        ~/.cargon/bin/ironbar var set network "󰖪 Off"
     fi
 }
 
