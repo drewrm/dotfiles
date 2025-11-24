@@ -18,7 +18,7 @@ function main() {
     esac
 
     if [ $result -ne 0 ]; then
-        contour class ${command} ${command}
+        foot -a ${command} ${command}
     else 
         case "${XDG_SESSION_DESKTOP}" in 
             Hyprland)
