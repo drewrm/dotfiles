@@ -1,33 +1,11 @@
 set nocompatible
-set rtp+=~/.config/nvim/bundle/Vundle.vim
 
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'folke/tokyonight.nvim'
-"Plugin 'Github/copilot.vim'
-Plugin 'lambdalisue/vim-fern'
-Plugin 'lambdalisue/vim-fern-git-status'
-Plugin 'lambdalisue/vim-nerdfont'
-Plugin 'lambdalisue/vim-fern-hijack'
-Plugin 'lambdalisue/vim-fern-renderer-nerdfont'
-Plugin 'catgoose/nvim-colorizer.lua'
-Plugin 'mrcjkb/rustaceanvim'
-Plugin 'cordx56/rustowl'
-Plugin 'rust-lang/rust.vim'
-Plugin 'mason-org/mason.nvim'
-Plugin 'nvim-treesitter/nvim-treesitter'
-Plugin 'mfussenegger/nvim-dap'
-Plugin 'neovim/nvim-lspconfig'
-Plugin 'hrsh7th/nvim-cmp'
-Plugin 'hrsh7th/cmp-nvim-lsp'
-Plugin 'hrsh7th/cmp-buffer'
-Plugin 'hrsh7th/cmp-path'
-Plugin 'hrsh7th/cmp-cmdline'
-Plugin 'onsails/lspkind.nvim'
-
-
-call vundle#end()
+lua <<EOF
+    vim.g["fern#renderer"] = "nerdfont"
+    vim.g["fern#default_hidden"] = 1 
+    vim.g.loaded_perl_provider = 0
+    require("config.lazy")
+EOF
 
 filetype plugin indent on
 colorscheme tokyonight-night
@@ -48,15 +26,17 @@ lua <<EOF
         },
     })
     
+
+
     require 'nvim-treesitter.configs'.setup({
       ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust" },
       sync_install = false,
       auto_install = true,
       highlight = {
-        enable = true,
+       enable = true,
         additional_vim_regex_highlighting = false,
       },
-    })
+     })
 
     local cmp = require 'cmp'
     cmp.setup({
@@ -67,8 +47,6 @@ lua <<EOF
         },
 
         window = {
-          -- completion = cmp.config.window.bordered(),
-          -- documentation = cmp.config.window.bordered(),
           completion = {
               winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
               col_offset = -3,
@@ -95,6 +73,8 @@ lua <<EOF
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
+
+        
 
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
@@ -132,8 +112,6 @@ lua <<EOF
 EOF
 
 autocmd BufReadPost * lua require 'colorizer'.attach_to_buffer(0)
-let g:fern#renderer = 'nerdfont'
-let g:fern#default_hidden = 1
 
 function! s:init_fern() abort
   " Define NERDTree like mappings
@@ -174,8 +152,8 @@ augroup fern-custom
   autocmd FileType fern call s:init_fern()
 augroup END
 
-nmap <silent> <leader>f :Fern . -drawer -toggle<CR>
+nmap <silent> <leader>d :Fern . -drawer -toggle<CR>
 
 set shiftwidth=4
 set expandtab
-set number
+set relativenumber
