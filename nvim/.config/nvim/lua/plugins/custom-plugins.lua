@@ -19,7 +19,7 @@ return {
         "mrcjkb/rustaceanvim",
     },
     {
-        "cordx57/rustowl",
+        "cordx56/rustowl",
     },
     {
         "rust-lang/rust.vim",
@@ -113,5 +113,12 @@ return {
                 desc = "Buffer Local Keymaps"
             },
         },
+    },
+    {
+        'startup-nvim/startup.nvim',
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope-file-browser.nvim" },
+        config = function()
+            require "startup".setup()
+        end,
     },
 }
