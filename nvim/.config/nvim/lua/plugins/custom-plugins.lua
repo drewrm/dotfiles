@@ -14,6 +14,20 @@ return {
     },
     {
         "catgoose/nvim-colorizer.lua",
+        event = "VeryLazy",
+        opts = {
+            lazy_load = true,
+            filetypes = { '*' },
+            user_default_options = {
+                RGB = true; -- #RGB hex codes
+                RRGGBB = true; -- #RRGGBB hex codes
+                RRGGBBAA = true; -- #RRGGBBAA hex codes
+                rgb_fn = true; -- CSS rgb() and rgba() functions
+                hsl_fn = true; -- CSS hsl() and hsla() functions
+                css = true; -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                css_fn = true; -- Enable all CSS *functions*: rgb_fn, hsl_fn
+            },
+        },
     },
     {
         "mrcjkb/rustaceanvim",
@@ -25,7 +39,32 @@ return {
         "rust-lang/rust.vim",
     },
     {
+        "mason-org/mason-lspconfig.nvim",
+         config = function()
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "rust_analyzer",
+                    "csharp_ls",
+                    "vimls",
+                    "jdtls",
+                }
+            })
+         end,
+    },
+    {
         "mason-org/mason.nvim",
+        config = function()
+           require("mason").setup()
+        end,
+        opts = {
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗",
+                },
+            },
+        },
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -35,6 +74,13 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        config = function()
+          vim.lsp.enable('codebook')
+          vim.lsp.enable('rust_analyzer')
+          vim.lsp.enable('vimls')
+          vim.lsp.enable('csharp_ls')
+          vim.lsp.enable('jdtls')
+        end,
     },
     {
         "hrsh7th/nvim-cmp",
@@ -54,7 +100,7 @@ return {
         cmd = "Telescope",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            { 
+            {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = make,
             },
@@ -77,15 +123,15 @@ return {
             telescope.load_extension("fzf")
         end,
         keys = {
-            { 
-                "<leader>ff", 
+            {
+                "<leader>ff",
                 function()
                     require("telescope.builtin").find_files({
                         hidden = true,       -- include dotfiles
                         no_ignore = true,    -- ignore .gitignore rules
                     })
                 end,
-                desc = "Find files" 
+                desc = "Find files"
             },
             { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "Live grep" },
             { "<leader>fb", "<cmd>Telescope buffers<cr>",    desc = "Find buffers" },

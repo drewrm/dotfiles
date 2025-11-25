@@ -11,25 +11,8 @@ filetype plugin indent on
 colorscheme tokyonight-night
 
 lua <<EOF
-    require 'mason'.setup()
-
-    require 'colorizer'.setup({
-        filetypes = { '*' },
-        user_default_options = {
-            RGB = true; -- #RGB hex codes
-            RRGGBB = true; -- #RRGGBB hex codes
-            RRGGBBAA = true; -- #RRGGBBAA hex codes
-            rgb_fn = true; -- CSS rgb() and rgba() functions
-            hsl_fn = true; -- CSS hsl() and hsla() functions
-            css = true; -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-            css_fn = true; -- Enable all CSS *functions*: rgb_fn, hsl_fn
-        },
-    })
-    
-
-
     require 'nvim-treesitter.configs'.setup({
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust" },
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust", "java" },
       sync_install = false,
       auto_install = true,
       highlight = {
@@ -45,7 +28,6 @@ lua <<EOF
             vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
           end,
         },
-
         window = {
           completion = {
               winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -54,6 +36,7 @@ lua <<EOF
           },
         },
 
+
         formatting = {
             fields = { "kind", "abbr", "menu" },
             format = function(entry, vim_item)
@@ -61,7 +44,6 @@ lua <<EOF
               local strings = vim.split(kind.kind, "%s", { trimempty = true })
               kind.kind = " " .. (strings[1] or "") .. " "
               kind.menu = "    (" .. (strings[2] or "") .. ")"
-
               return kind
             end,
         },
@@ -107,7 +89,6 @@ lua <<EOF
     capabilities = capabilities
   })
 
-  vim.lsp.enable('codebook')
 
 EOF
 
@@ -145,7 +126,6 @@ function! s:init_fern() abort
   nmap <buffer><nowait> l <Plug>(fern-my-expand-or-collapse)
 
 endfunction
-
 
 augroup fern-custom
   autocmd!
