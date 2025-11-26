@@ -1,9 +1,11 @@
 set nocompatible
 
+
 lua <<EOF
     vim.g["fern#renderer"] = "nerdfont"
     vim.g["fern#default_hidden"] = 1 
     vim.g.loaded_perl_provider = 0
+    vim.o.winborder = "rounded"
     require("config.lazy")
 EOF
 
@@ -53,3 +55,7 @@ nmap <silent> <leader>d :Fern . -drawer -toggle<CR>
 set shiftwidth=4
 set expandtab
 set relativenumber
+
+highlight FloatBorder guifg=#bb9af7 guibg=#1a1b26
+highlight MasonHighlight guifg=#bb9af7 guibg=#1a1b26
+highlight MasonHighlightBlockBold guibg=#bb9af7 guifg=#1a1b26

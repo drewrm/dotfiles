@@ -10,9 +10,11 @@ return {
     },
     {
         "mrcjkb/rustaceanvim",
+        lazy = false,
     },
     {
         "cordx56/rustowl",
+        lazy = false,
     },
     {
         "rust-lang/rust.vim",
