@@ -8,7 +8,6 @@ lua <<EOF
 EOF
 
 filetype plugin indent on
-colorscheme tokyonight-night
 autocmd BufReadPost * lua require 'colorizer'.attach_to_buffer(0)
 
 function! s:init_fern() abort
