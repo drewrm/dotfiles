@@ -65,6 +65,29 @@ return {
         end,
     },
     {
+        "zbirenbaum/copilot.lua",
+        dependencies = {
+            "copilotlsp-nvim/copilot-lsp",
+        },
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function ()
+            require("copilot").setup({
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+            })
+        end
+    },
+    {
+        "zbirenbaum/copilot-cmp",
+        dependencies = {
+            "zbirenbaum/copilot.lua",
+        },
+        config = function ()
+            require("copilot_cmp").setup()
+        end
+    },
+    {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
@@ -85,8 +108,6 @@ return {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
-
-
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
                     format = function(entry, vim_item)
@@ -108,6 +129,7 @@ return {
 
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
+                    { name = 'copilot' },
                     { name = 'vsnip' },
                 }, {
                     { name = 'buffer' },
@@ -134,5 +156,13 @@ return {
     },
     {
         "onsails/lspkind.nvim",
+        config = function ()
+            require("lspkind").init({
+                preset = 'codicons',
+                symbol_map = {
+                    Copilot = "",
+                },
+            })
+        end
     },
 }
