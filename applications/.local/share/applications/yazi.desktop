@@ -2,7 +2,7 @@
 Type=Application
 Name=Yazi
 Comment=Launch Yazi file manager
-Exec=foot yazi
+Exec=contour yazi
 Icon=/home/andrew/Downloads/yazi.png
 Terminal=false
 Categories=System;Utility;FileManager;

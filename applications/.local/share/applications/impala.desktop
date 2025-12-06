@@ -2,5 +2,5 @@
 Type=Application
 Name=Impala
 Comment=Launch Impala Network Manager
-Exec=foot /home/andrew/.cargo/bin/impala
+Exec=contour /home/andrew/.cargo/bin/impala
 Terminal=false

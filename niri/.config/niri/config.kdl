@@ -381,7 +381,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+A hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "foot"; }
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "contour"; }
     Mod+Space hotkey-overlay-title="Run Application" { spawn "walker"; }
     Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
 
@@ -548,7 +548,7 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
+    Mod+Tab { focus-workspace-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
