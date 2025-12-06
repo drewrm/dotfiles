@@ -19,7 +19,9 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = lsps
             })
-        end,
+            vim.cmd.highlight({ "MasonHighlight", "guifg=#bb9af7", "guibg=#1a1b26" })
+            vim.cmd.highlight({ "MasonHighlightBlockBold", "guibg=#bb9af7", "guifg=#1a1b26" })
+            end,
         opts = {
             ui = {
                 icons = {

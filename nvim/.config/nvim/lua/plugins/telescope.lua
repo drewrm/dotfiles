@@ -15,7 +15,7 @@ return {
             local telescope = require("telescope")
             telescope.setup({
                 defaults = {
-                    file_ignore_patterns = { ".git/" },
+                    file_ignore_patterns = { ".git/", "target/", "node_modules/", ".venv", "*.o" },
                     hidden = true,
                 },
                 extensions = {
@@ -42,6 +42,11 @@ return {
             telescope.load_extension("fzf")
             telescope.load_extension("project")
             telescope.load_extension("themes")
+
+            vim.cmd.highlight({ "TelescopeBorder", "guifg=#bb9af7", "guibg=#1a1b26" })
+            vim.cmd.highlight({ "TelescopePromptBorder", "guifg=#7aa2f7", "guibg=#1a1b26" })
+            vim.cmd.highlight({ "TelescopePromptTitle", "guifg=#7aa2f7", "guibg=#1a1b26" })
+            vim.cmd.highlight({ "TelescopeSelection", "guibg=#bb9af7", "guifg=#1a1b26" })
         end,
         keys = {
             {
@@ -68,5 +73,20 @@ return {
             { "<leader>gs", "<cmd>Telescope git_status<cr>",   desc = "Git status" },
             { "<leader>fp", "<cmd>Telescope project<cr>",  desc = "View Projects" },
         },
+    },
+    {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require('dashboard').setup {
+                theme = 'hyper',
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                },
+            }
+        end,
     },
 }
