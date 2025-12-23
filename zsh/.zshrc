@@ -10,5 +10,6 @@ export EDITOR='nvim'
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(op completion zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 export TERM="xterm-256color"
