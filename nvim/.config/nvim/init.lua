@@ -11,6 +11,19 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.winborder = "rounded"
 vim.o.swapfile = false
+vim.o.foldmethod = "syntax"
+
+-- Save view (folds, cursor position, etc.) when leaving a buffer or closing nvim
+vim.api.nvim_create_autocmd({"BufWinLeave", "BufLeave", "QuitPre"}, {
+    pattern = {"*.*"}, -- Apply to all files with a non-empty name
+    command = "mkview"
+})
+
+-- Load view when entering a buffer
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+    pattern = {"*.*"},
+    command = "silent! loadview" -- Use silent! to avoid errors if no view file exists
+})
 
 -- start lazy.nvim plugin manager
 require("config.lazy")
