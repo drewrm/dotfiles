@@ -272,6 +272,18 @@ layout {
     }
 }
 
+// Configuration for the Recent Windows pop-up.
+recent-windows {
+    highlight {
+        active-color "#7aa2f7ee"
+        corner-radius 8
+    }
+
+    previews {
+        max-height 800
+    }
+}
+
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
@@ -280,6 +292,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-at-startup "ibus start --type=wayland"
 spawn-sh-at-startup "walker --gapplication-service"
 //spawn-sh-at-startup "~/.cargo/bin/awww-daemon"
 
