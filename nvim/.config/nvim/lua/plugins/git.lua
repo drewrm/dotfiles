@@ -11,5 +11,8 @@ return {
         keys = {
             { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
         }
+    },
+    {
+        "lewis6991/gitsigns.nvim",
     }
 }
