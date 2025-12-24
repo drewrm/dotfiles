@@ -6,6 +6,9 @@
 	co = checkout
 [gpg]
 	format = ssh
+[log]
+    showSignature = true
+    date = iso
 [user]
 	signingkey = ~/.ssh/id_ed25519_sk.pub
 [commit]
