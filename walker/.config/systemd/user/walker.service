@@ -1,0 +1,13 @@
+[Unit]
+Description=Walker Application Launcher Service
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=%h/.cargo/bin/walker --gapplication-service
+ExecReload=kill -SIGUSR2 $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

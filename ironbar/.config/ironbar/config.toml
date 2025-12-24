@@ -51,4 +51,4 @@ class = "power"
 [[end.bar]]
 type = "button"
 label = ""
-on_click = "! ~/.config/rofi/powermenu/type-1/powermenu.sh"
+on_click = "! walker -nm menus:power --height 400"
