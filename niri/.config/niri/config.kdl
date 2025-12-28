@@ -394,6 +394,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+A hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
     Mod+T hotkey-overlay-title="Open Terminal" { spawn "contour"; }
+    Mod+Ctrl+B hotkey-overlay-title="Check for Updates" { spawn-sh "walker -m fedorapackages"; }
     Mod+Ctrl+T hotkey-overlay-title="Bluetooth Devices" { spawn-sh "walker -m bluetooth"; }
     Mod+Space hotkey-overlay-title="Run Application" { spawn "walker"; }
     Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
