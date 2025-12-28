@@ -4,6 +4,7 @@
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.o.showmode = false
 vim.o.compatible = false
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
