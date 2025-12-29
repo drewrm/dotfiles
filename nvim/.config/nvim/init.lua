@@ -13,6 +13,7 @@ vim.o.relativenumber = true
 vim.o.winborder = "rounded"
 vim.o.swapfile = false
 vim.o.foldmethod = "syntax"
+vim.o.updatetime = 250
 
 -- Save view (folds, cursor position, etc.) when leaving a buffer or closing nvim
 vim.api.nvim_create_autocmd({"BufWinLeave", "BufLeave", "QuitPre"}, {

@@ -21,7 +21,7 @@ return {
             })
             vim.cmd.highlight({ "MasonHighlight", "guifg=#bb9af7", "guibg=#1a1b26" })
             vim.cmd.highlight({ "MasonHighlightBlockBold", "guibg=#bb9af7", "guifg=#1a1b26" })
-            end,
+        end,
         opts = {
             ui = {
                 icons = {
@@ -69,7 +69,15 @@ return {
                 })
             end
 
+            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                callback = function()
+                    vim.diagnostic.open_float(nil, { focus = false })
+                end,
+            })
+
+
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+            vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
             vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
             vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
