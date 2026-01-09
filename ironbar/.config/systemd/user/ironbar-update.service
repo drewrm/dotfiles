@@ -2,9 +2,10 @@
 Description=Updates dynamic values in Ironbar
 
 [Service]
+Type=simple
 Environment="HOME=%h"
 ExecStart=%h/.config/ironbar/updater.sh
-Type=oneshot
+Restart=on-failure
 
 [Install]
-RequiredBy=ironbar-update.timer
+WantedBy=ironbar.service

@@ -5,7 +5,7 @@ function bt {
     local connected_device=$(bluetoothctl devices Connected | head -n 1 | awk '{$1=""; $2=""; print}')
     local battery_icon="󰂂"
     local battery_pct="" 
-    
+
     if [ ! -z "${connected_device}" ]; then
         battery_pct=$(printf "%d" $(bluetoothctl devices Connected | awk '{print $2}' | bluetoothctl info | awk '/Battery/{print $3}'))
 
@@ -40,10 +40,48 @@ function network {
     fi
 }
 
-function main {
-    bt
-    network
+function sound {
+    local volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}')
+    local muted_display=""
+    local volume_display="${volume}% ${muted_display}"
+
+    if (($volume < 1)); then
+        volume_icon="󰝟"
+    elif (($volume < 30)); then
+        volume_icon="󰕿"
+    elif (($volume < 60)); then
+        volume_icon="󰖀"
+    else
+        volume_icon="󰕾"
+    fi
+
+    if [ ! -z "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $3}')" ]; then
+        volume_icon="󰝟"
+        volume_display="${volume_display} (muted)"
+    fi
+
+    if [ ! -z "${volume_display}" ]; then
+        ~/.cargo/bin/ironbar var set sound "${volume_icon} ${volume_display}"
+    else
+        ~/.cargon/bin/ironbar var set sound "󰖁 Off"
+    fi
+
 }
 
+function cleanup {
+    echo "Bye for now".
+    exit 0
+}
+
+function main {
+    while true; do
+        bt
+        network
+        sound
+        sleep 2
+    done
+}
+
+trap cleanup SIGTERM SIGINT
+
 main
-exit 0

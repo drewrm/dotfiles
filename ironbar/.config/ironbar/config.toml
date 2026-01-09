@@ -8,6 +8,7 @@ exclusive_zone = true
 [ironvar_defaults]
 network = "󰖪 Off"
 bluetooth = "󰂲 Off"
+sound = " 0%"
 
 [[bar]]
 
@@ -39,6 +40,15 @@ class = "bluetooth"
 type = "button"
 label = "#bluetooth"
 on_click = "! ~/.config/waybar/scripts/start-or-focus.sh ~/.cargo/bin/bluetui"
+
+[[end]]
+type = "custom"
+class = "sound"
+
+[[end.bar]]
+type = "button"
+label = "#sound"
+on_click = "! ~/.config/waybar/scripts/start-or-focus.sh wiremix"
 
 [[end]]
 type = "clock"

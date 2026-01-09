@@ -10,4 +10,4 @@ ExecReload=kill -SIGUSR2 $MAINPID
 Restart=on-failure
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=niri.service
