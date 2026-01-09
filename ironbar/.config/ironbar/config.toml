@@ -48,7 +48,7 @@ class = "sound"
 [[end.bar]]
 type = "button"
 label = "#sound"
-on_click = "! ~/.config/waybar/scripts/start-or-focus.sh wiremix"
+on_click = "! ~/.config/waybar/scripts/start-or-focus.sh wiremix -v output"
 
 [[end]]
 type = "clock"

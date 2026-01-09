@@ -2,8 +2,13 @@
 
 function main() {
     local command=$1
+    shift 
+
+    local args=${@}
     local result=0
     local window_id=""
+
+    echo ${args}
 
     case "${XDG_SESSION_DESKTOP}" in 
         Hyprland)
@@ -18,7 +23,7 @@ function main() {
     esac
 
     if [ $result -ne 0 ]; then
-        contour --class ${command} ${command}
+        contour --class ${command} ${command} ${args}
     else 
         case "${XDG_SESSION_DESKTOP}" in 
             Hyprland)
