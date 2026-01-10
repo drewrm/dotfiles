@@ -3,4 +3,5 @@ Type=Application
 Name=Bluetui
 Comment=Launch Bluetui Bluetooth Manager
 Exec=contour /home/andrew/.cargo/bin/bluetui
+Icon=/home/andrew/bluetui.svg
 Terminal=false

@@ -16,13 +16,13 @@ function main() {
             ;;
         niri)
             window_id=$(niri msg windows | grep -B2 "App ID: \"${command}" | grep -Po '\d+')
-            result=$?
+            result=${?}
             ;;
         *)
             ;;
     esac
 
-    if [ $result -ne 0 ]; then
+    if [ ${result} -ne 0 ]; then
         contour --class ${command} ${command} ${args}
     else 
         case "${XDG_SESSION_DESKTOP}" in 

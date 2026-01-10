@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Wiremix
+Comment=Launch Wiremix Audio Manager
+Exec=contour wiremix -v output
+Icon=/home/andrew/wiremix.svg
+Terminal=false

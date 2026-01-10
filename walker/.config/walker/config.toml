@@ -124,9 +124,9 @@ archlinuxpkgs = [
   { action = "visit_url", label = "Open URL", bind = "ctrl o" },
 ]
 
-fedorapackages = [
+dnfpackages = [
   { action = "install", label = "Install Package", bind = "Return", default = true },
-  { action = "remove", label = "Remove Package", bind = "Return" },
+  { action = "remove", label = "Remove Package", bind = "Return", default = true },
   { action = "show_all", label = "Show All", bind = "ctrl i", after = "AsyncClearReload" },
   { action = "show_installed", label = "Show Installed", bind = "ctrl i", after = "AsyncClearReload" },
   { action = "refresh", label = "Refresh", bind = "ctrl r", after = "AsyncClearReload" },

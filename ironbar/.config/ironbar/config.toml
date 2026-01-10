@@ -17,7 +17,7 @@ type = "workspaces"
 
 [[start]]
 type = "launcher"
-favourites = ["firefox", "steam", "1password"]
+favourites = ["contour", "firefox", "steam", "1password"]
 
 [[center]]
 type = "music"

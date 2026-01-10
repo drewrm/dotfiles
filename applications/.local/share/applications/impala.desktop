@@ -3,4 +3,5 @@ Type=Application
 Name=Impala
 Comment=Launch Impala Network Manager
 Exec=contour /home/andrew/.cargo/bin/impala
+Icon=/home/andrew/impala.svg
 Terminal=false
