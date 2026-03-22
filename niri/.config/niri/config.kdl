@@ -109,8 +109,13 @@ output "DP-1" {
 }
 
 layer-rule {
-    match namespace="^hyprpaper$"
+    match namespace="^wallpaperd$"
     place-within-backdrop true
+}
+
+window-rule {
+    match app-id="org.example.PolkitAgentUI"
+    open-floating true
 }
 
 overview {

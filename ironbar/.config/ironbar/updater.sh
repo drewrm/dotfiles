@@ -36,14 +36,13 @@ function network {
     if [ ! -z "${network}" ]; then 
         ~/.cargo/bin/ironbar var set network "󰖩 ${network}"
     else
-        ~/.cargon/bin/ironbar var set network "󰖪 Off"
+        ~/.cargo/bin/ironbar var set network "󰖪 Off"
     fi
 }
 
 function sound {
     local volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}')
-    local muted_display=""
-    local volume_display="${volume}% ${muted_display}"
+    local volume_display="${volume}%"
 
     if (($volume < 1)); then
         volume_icon="󰝟"
@@ -63,13 +62,12 @@ function sound {
     if [ ! -z "${volume_display}" ]; then
         ~/.cargo/bin/ironbar var set sound "${volume_icon} ${volume_display}"
     else
-        ~/.cargon/bin/ironbar var set sound "󰖁 Off"
+        ~/.cargo/bin/ironbar var set sound "󰖁 Off"
     fi
 
 }
 
 function cleanup {
-    echo "Bye for now".
     exit 0
 }
 

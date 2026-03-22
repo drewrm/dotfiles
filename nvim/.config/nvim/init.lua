@@ -14,6 +14,10 @@ vim.o.winborder = "rounded"
 vim.o.swapfile = false
 vim.o.foldmethod = "syntax"
 vim.o.updatetime = 250
+vim.o.termguicolors = true
+
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
+
 
 -- Save view (folds, cursor position, etc.) when leaving a buffer or closing nvim
 vim.api.nvim_create_autocmd({"BufWinLeave", "BufLeave", "QuitPre"}, {
