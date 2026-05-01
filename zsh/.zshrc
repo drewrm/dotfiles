@@ -7,7 +7,7 @@ bindkey ^S history-incremental-search-forward
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:${HOME}/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}"
 
 alias vim='nvim'
 alias vimdiff='nvim -d'
@@ -19,6 +19,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${HOME}/.cargo/env
 
 
 export TERM="xterm-256color"

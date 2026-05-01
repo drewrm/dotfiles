@@ -340,7 +340,7 @@ profiles:
                 # - CoreText    : selects CoreText engine (Mac OS/X only) (currently not implemented)
                 # - OpenShaper  : selects OpenShaper (harfbuzz/freetype/fontconfig, available on all
                 #                 platforms)
-                engine: harfbuzz
+                engine: native
 
             # Uses builtin textures for pixel-perfect box drawing.
             # If disabled, the font's provided box drawing characters
@@ -368,15 +368,15 @@ profiles:
             regular:
                 # Font family defines the font family name, such as:
                 # ""Fira Code", "Courier New", or "monospace" (default).
-                family: "CaskaydiaMono Nerd Font"
+                family: "JetBrains Mono Nerd Font"
 
                 # Font weight can be one of:
                 #   thin, extra_light, light, demilight, book, normal,
                 #   medium, demibold, bold, extra_bold, black, extra_black.
-                weight: demilight
+                weight: normal
 
                 # Font slant can be one of: normal, italic, oblique.
-                slant: Normal
+                slant: normal
 
                 # Set of optional font features to be enabled. This
                 # is usually a 4-letter code, such as ss01 or ss02 etc.
@@ -464,7 +464,7 @@ profiles:
         background:
             # Background opacity to use. A value of 1.0 means fully opaque whereas 0.0 means fully
             # transparent. Only values between 0.0 and 1.0 are allowed.
-            opacity: 1
+            opacity: 0.9
             # Some platforms can blur the transparent background (currently only Windows is     supported).
             blur: false
 
@@ -755,8 +755,8 @@ input_mapping:
     - { mods: [Shift]             , key: 'F3'                    , action: FocusPreviousSearchMatch }
     - { mods: [Shift]             , key: 'LeftArrow'             , action: SwitchToTabLeft }    
     - { mods: [Shift]             , key: 'RightArrow'            , action: SwitchToTabRight }   
-    - { mods: [Shift,Control]     , key: '-'                     , action: DecreaseFontSize }   
     - { mods: [Shift,Control]     , key: '_'                     , action: DecreaseFontSize }   
+    - { mods: [Shift,Control]     , key: '+'                     , action: IncreaseFontSize }   
     - { mods: [Shift,Control]     , key: 'N'                     , action: NewTerminal }        
     - { mods: [Alt,Control]       , key: 'V'                     , action: PasteClipboard }     
     - { mods: [Shift,Control]     , key: 'V'                     , action: PasteClipboard }     

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=nvtop
+GenericName=GPU Monitor
+Comment=GPU monitor
+Exec=contour nvtop
+Terminal=false
+Categories=System;Monitor;ConsoleOnly;
+Keywords=system;process;task
