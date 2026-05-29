@@ -1,6 +1,8 @@
 force_keyboard_focus = false    # forces keyboard forcus to stay in Walker
 close_when_open = true          # close walker when invoking while already opened
 click_to_close = true           # closes walker if clicking outside of the main content area
+as_window = false               # launch walker as a regular window instead of layer shell application
+single_click_activation = true  # activate items with a single click opposed to a double click
 selection_wrap = false          # wrap list if at bottom or top
 global_argument_delimiter = "#" # query: firefox#https://benz.dev => part after delimiter will be ignored when querying. this should be the same as in the elephant config
 exact_search_prefix = "'"       # disable fuzzy searching
@@ -9,12 +11,25 @@ disable_mouse = false           # disable mouse (on input and list only)
 debug = false                   # enables debug printing for some stuff, f.e. keybinds
 page_jump_items = 10            # number of items to skip with Page Up/Down
 hide_quick_activation = false   # globally hide the quick activation buttons
+hide_action_hints = false       # globally hide the action hints
+hide_action_hints_dmenu = true  # hide the actions hints for dmenu
+hide_return_action = false      # hide actions that are bound to Return
+keybind_symbols = true          # render keybind hints with key symbols (e.g. ⌃+⏎) instead of plain text ("ctrl Return")
+resume_last_query = false       # open walker with the last query in place
+actions_as_menu = false         # display all possible actions in a submenu
+autoplay_videos = false         # auto-play video previews
+ext_background_effect_blur = false # request the compositor to blur behind the box-wrapper via ext-background-effect-v1 (compositor must support it)
 
 [shell]
+exclusive_zone = -1
+layer = "overlay"
 anchor_top = true
 anchor_bottom = true
 anchor_left = true
 anchor_right = true
+
+[columns]
+"symbols" = 3
 
 [placeholders]
 "default" = { input = "Search", list = "No Results" } # placeholders for input and empty list, key is the providers name, so f.e. "desktopapplications" or "menus:other"
@@ -23,17 +38,22 @@ anchor_right = true
 close = ["Escape"]
 next = ["Down"]
 previous = ["Up"]
+left = ["Left"]
+right = ["Right"]
+down = ["Down"]
+up = ["Up"]
 toggle_exact = ["ctrl e"]
 resume_last_query = ["ctrl r"]
 quick_activate = ["F1", "F2", "F3", "F4", "F5"]
 page_down = ["Page_Down"]
 page_up = ["Page_Up"]
+show_actions = ["alt j"]
 
 [providers]
 default = [
   "desktopapplications",
   "calc",
-  "runner",
+  # "runner",
   "websearch",
 ] # providers to be queried by default
 empty = ["desktopapplications"] # providers to be queried when query is empty
@@ -41,7 +61,7 @@ ignore_preview = [] # providers that should not show previews
 max_results = 50 # global max results
 
 [providers.argument_delimiter] # define the argument delimiter per provider
-runner = " "
+# runner = " "
 
 [providers.sets] # define your own defaults/empty sets of providers
 [providers.max_results_provider] # define max results per provider in here
@@ -87,12 +107,9 @@ prefix = "$"
 provider = "windows"
 
 [providers.clipboard]
-time_format = "%d.%m. - %H:%M" # format for the clipboard item date
-backend = "cliphist"
-decode_command = "cliphist decode"
-copy_command = "wl-copy"
+time_format = "relative" # format for the clipboard item date
 
-[providers.actions] # This will be MERGED/OVEWRITTEN with what the user specifies
+[providers.actions] # This will be MERGED/OVERWRITTEN with what the user specifies
 fallback = [
   { action = "menus:open", label = "open", after = "Nothing" },
   { action = "menus:default", label = "run", after = "Close" },
@@ -114,32 +131,30 @@ bluetooth = [
   { action = "pair", bind = "Return", after = "AsyncReload" },
   { action = "connect", default = true, bind = "Return", after = "AsyncReload" },
   { action = "disconnect", default = true, bind = "Return", after = "AsyncReload" },
+  { action = "power_on", label = "Power On", bind = "ctrl e", after = "AsyncReload" },
+  { action = "power_off", label = "Power Off", bind = "ctrl e", after = "AsyncReload" },
 ]
 
 archlinuxpkgs = [
   { action = "install", bind = "Return", default = true },
-  { action = "remove", bind = "Return" },
-  { action = "show_all", label = "Show All", bind = "ctrl i", after = "AsyncClearReload" },
-  { action = "show_installed", label = "Show Installed", bind = "ctrl i", after = "AsyncClearReload" },
-  { action = "visit_url", label = "Open URL", bind = "ctrl o" },
-]
-
-dnfpackages = [
-  { action = "install", label = "Install Package", bind = "Return", default = true },
-  { action = "remove", label = "Remove Package", bind = "Return", default = true },
-  { action = "show_all", label = "Show All", bind = "ctrl i", after = "AsyncClearReload" },
-  { action = "show_installed", label = "Show Installed", bind = "ctrl i", after = "AsyncClearReload" },
-  { action = "refresh", label = "Refresh", bind = "ctrl r", after = "AsyncClearReload" },
-  { action = "visit_url", label = "Open URL", bind = "ctrl o" },
+  { action = "remove", bind = "Return", default = true },
+  { action = "show_all", label = "show all", bind = "ctrl i", after = "AsyncClearReload" },
+  { action = "refresh", label = "refresh", bind = "ctrl r", after = "AsyncReload" },
+  { action = "visit_url", label = "open URL", bind = "ctrl o" },
+  { action = "show_installed", label = "show installed", bind = "ctrl i", after = "AsyncClearReload" },
 ]
 
 calc = [
   { action = "copy", default = true, bind = "Return" },
   { action = "delete", bind = "ctrl d", after = "AsyncReload" },
+  { action = "delete_all", bind = "ctrl shift d", after = "AsyncReload" },
   { action = "save", bind = "ctrl s", after = "AsyncClearReload" },
 ]
 
-websearch = [{ action = "search", default = true, bind = "Return" }]
+websearch = [
+  { action = "search", default = true, bind = "Return" },
+  { action = "open_url", label = "open url", default = true, bind = "Return" },
+]
 
 desktopapplications = [
   { action = "start", default = true, bind = "Return" },
@@ -152,11 +167,38 @@ desktopapplications = [
   { action = "pindown", bind = "ctrl m", after = "AsyncReload" },
 ]
 
+dnfpackages = [
+  { action = "install", label = "Install Package", bind = "Return", default = true },
+  { action = "remove", label = "Remove Package", bind = "Return", default = true },
+  { action = "show_all", label = "Show All", bind = "ctrl i", after = "AsyncClearReload" },
+  { action = "show_installed", label = "Show Installed", bind = "ctrl i", after = "AsyncClearReload" },
+  { action = "refresh", label = "Refresh", bind = "ctrl r", after = "AsyncClearReload" },
+  { action = "visit_url", label = "Open URL", bind = "ctrl o" },
+]
+
 files = [
   { action = "open", default = true, bind = "Return" },
   { action = "opendir", label = "open dir", bind = "ctrl Return" },
   { action = "copypath", label = "copy path", bind = "ctrl shift c" },
   { action = "copyfile", label = "copy file", bind = "ctrl c" },
+  { action = "localsend", label = "localsend", bind = "ctrl l" },
+  { action = "refresh_index", label = "reload", bind = "ctrl r", after = "AsyncReload" },
+]
+
+1password = [
+  { action = "copy_password", label = "copy password", default = true, bind = "Return" },
+  { action = "copy_username", label = "copy username", bind = "shift Return" },
+  { action = "copy_2fa", label = "copy 2fa", bind = "ctrl Return" },
+]
+
+bitwarden = [
+  { action = "copypassword", label = "copy password", default = true, bind = "Return" },
+  { action = "typepassword", label = "type password", default = true, bind = "ctrl p" },
+  { action = "copyusername", label = "copy username", bind = "shift Return" },
+  { action = "typeusername", label = "type username", bind = "ctrl u" },
+  { action = "copyotp", label = "copy 2fa", bind = "ctrl Return" },
+  { action = "typeotp", label = "type 2fa", bind = "ctrl t" },
+  { action = "syncvault", label = "sync", bind = "ctrl s" },
 ]
 
 todo = [
@@ -197,9 +239,12 @@ clipboard = [
   { action = "show_images_only", label = "only images", bind = "ctrl i", after = "AsyncClearReload" },
   { action = "show_text_only", label = "only text", bind = "ctrl i", after = "AsyncClearReload" },
   { action = "show_combined", label = "show all", bind = "ctrl i", after = "AsyncClearReload" },
-  { action = "pause", bind = "ctrl p" },
-  { action = "unpause", bind = "ctrl p" },
+  { action = "pause", bind = "ctrl shift p" },
+  { action = "unpause", bind = "ctrl shift p" },
+  { action = "unpin", bind = "ctrl p", after = "AsyncClearReload" },
+  { action = "pin", bind = "ctrl p", after = "AsyncClearReload" },
   { action = "edit", bind = "ctrl o" },
+  { action = "localsend", bind = "ctrl l" },
 ]
 
 bookmarks = [
@@ -212,3 +257,26 @@ bookmarks = [
   { action = "create", bind = "ctrl a", after = "AsyncClearReload" },
   { action = "search", bind = "ctrl a", after = "AsyncClearReload" },
 ]
+
+wireplumber = [
+  { action = "increase_volume", label = "+volume", bind = "ctrl y", after = "Nothing" },
+  { action = "decrease_volume", label = "-volume", bind = "ctrl n", after = "Nothing" },
+  { action = "mute", bind = "ctrl m", after = "Nothing" },
+  { action = "unmute", bind = "ctrl m", after = "Nothing" },
+  { action = "set_default_device", label = "set default", bind = "ctrl d", after = "Nothing" },
+]
+
+playerctl = [
+  { action = "pause", label = "pause", bind = "Return", after = "Nothing", default = true },
+  { action = "play", label = "play", bind = "Return", after = "Nothing", default = true },
+  { action = "prev", label = "prev", bind = "ctrl p", after = "Nothing" },
+  { action = "next", label = "next", bind = "ctrl n", after = "Nothing" },
+  { action = "vol_up", label = "vol+", bind = "ctrl y", after = "Nothing" },
+  { action = "vol_down", label = "vol-", bind = "ctrl h", after = "Nothing" },
+  { action = "mute", label = "mute", bind = "ctrl m", after = "Nothing" },
+  { action = "unmute", label = "unmute", bind = "ctrl m", after = "Nothing" },
+  { action = "seek_back", label = "backward", bind = "ctrl b", after = "Nothing" },
+  { action = "seek_forward", label = "forward", bind = "ctrl f", after = "Nothing" },
+]
+
+niriactions = [{ action = "execute", bind = "Return" }]
