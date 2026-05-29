@@ -48,3 +48,11 @@ export FZF_DEFAULT_OPTS='--color=fg:#a9b1d6,fg+:#414868,bg:#15161e,bg+:#bb9af7
   --color=border:#7aa2f7,label:#aeaeae,query:#d9d9d9
   --preview-window="border-rounded" --prompt="> " --marker="" --pointer=""
   --separator=" " --scrollbar="║" --border="rounded" --margin=1 --padding=1'
+
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+}

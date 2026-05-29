@@ -2,8 +2,15 @@ return {
     {
         "folke/tokyonight.nvim",
         lazy = false,
+        --config = function ()
+        --    vim.cmd.colorscheme("tokyonight-night")
+        --end,
+    },
+    {
+        "rebelot/kanagawa.nvim",
+        lazy = false,
         config = function ()
-            vim.cmd.colorscheme("tokyonight-night")
+            vim.cmd.colorscheme("kanagawa-wave")
         end,
     },
     {

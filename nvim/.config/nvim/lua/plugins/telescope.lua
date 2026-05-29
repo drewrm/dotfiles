@@ -73,20 +73,5 @@ return {
             { "<leader>gs", "<cmd>Telescope git_status<cr>",   desc = "Git status" },
             { "<leader>fp", "<cmd>Telescope project<cr>",  desc = "View Projects" },
         },
-    },
-    {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require('dashboard').setup {
-                theme = 'hyper',
-                config = {
-                    week_header = {
-                        enable = true,
-                    },
-                },
-            }
-        end,
-    },
+    }
 }

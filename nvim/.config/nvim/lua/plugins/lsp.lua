@@ -34,18 +34,12 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
+        lazy = false,
         build = ":TSUpdate",
-        config = function ()
-            require 'nvim-treesitter.configs'.setup({
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust", "java", "c_sharp" },
-                sync_install = false,
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-            })
-        end
+        config = function()
+            --require("nvim-treesitter").install { "rust", "lua", "c-sharp", "java" }
+            require 'nvim-treesitter'.install { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust", "java", "c_sharp" }
+        end,
     },
     {
         "neovim/nvim-lspconfig",

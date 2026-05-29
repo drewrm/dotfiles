@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
     command = "silent! loadview" -- Use silent! to avoid errors if no view file exists
 })
 
+
 -- start lazy.nvim plugin manager
 require("config.lazy")
 

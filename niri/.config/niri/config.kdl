@@ -23,7 +23,8 @@ input {
 
         // Enable numlock on startup, omitting this setting disables it.
         numlock
-        repeat-rate 80
+        repeat-delay 200
+        repeat-rate 60
     }
 
     // Next sections include libinput settings.
@@ -80,7 +81,7 @@ input {
 output "DP-1" {
     // Uncomment this line to disable this output.
     // off
-
+    variable-refresh-rate on-demand=true
     // Resolution and, optionally, refresh rate of the output.
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
     // If the refresh rate is omitted, niri will pick the highest refresh rate
