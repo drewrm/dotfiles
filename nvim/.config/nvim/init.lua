@@ -15,6 +15,9 @@ vim.o.swapfile = false
 vim.o.foldmethod = "syntax"
 vim.o.updatetime = 250
 vim.o.termguicolors = true
+vim.o.encoding = "utf-8"
+vim.o.fileencoding = "utf-8"
+vim.o.guifontwide = ""
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
 

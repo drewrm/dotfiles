@@ -398,7 +398,7 @@ binds {
     Mod+Ctrl+P hotkey-overlay-title="Add/Remove Packages" { spawn-sh "walker -m dnfpackages"; }
     Mod+Ctrl+T hotkey-overlay-title="Bluetooth Devices" { spawn-sh "walker -m bluetooth"; }
     Mod+Space hotkey-overlay-title="Run Application" { spawn "walker"; }
-    Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
+    Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hengilas"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
