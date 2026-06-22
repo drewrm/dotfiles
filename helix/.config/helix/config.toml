@@ -1,0 +1,9 @@
+theme = "kanagawa"
+
+[editor]
+line-number = "relative"
+cursorline = true
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.file-picker]
+hidden = false
