@@ -1,0 +1,21 @@
+#[Backend]
+backend = "auto"
+transition_mode = "geo"
+
+#[Smoothing]
+smoothing = true
+startup_duration = 0.5
+shutdown_duration = 0.5
+adaptive_interval = 1
+
+#[Time-based config]
+night_temp = 3800
+day_temp = 6500
+night_gamma = 90
+day_gamma = 100
+update_interval = "auto"
+
+latitude = -33.867850
+longitude = 151.207321
+
+transition_duration = 60
